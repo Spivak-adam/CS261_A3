@@ -138,6 +138,7 @@ class LinkedList:
         if node.value == value:
             if not node.next:
                 prevNode.next = None
+                return True
 
         return False
 
