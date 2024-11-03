@@ -125,12 +125,19 @@ class LinkedList:
         Iterates through list and removes the value object given in the parameter.
         """
         node = self._head
+        prevNode = node
 
         for i in range(self.length()):
+            prevNode = node
             node = node.next
-            if node.value == value:
-                node.next = node.next.next
-                return True
+            if node.next:
+                if node.value == value:
+                    prevNode.next = node.next
+                    return True
+
+        if node.value == value:
+            if not node.next:
+                prevNode.next = None
 
         return False
 
@@ -153,7 +160,14 @@ class LinkedList:
         """
         TODO: Write this implementation
         """
-        pass
+        node = self._head
+
+        for i in range(self.length()):
+            if node.value == value:
+                return True
+            node = node.next
+
+        return False
 
     def slice(self, start_index: int, size: int) -> "LinkedList":
         """
