@@ -1,8 +1,8 @@
-# Name:
-# OSU Email:
+# Name: Adam Spivak
+# OSU Email: Spivaka@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
+# Assignment: Assignment 3
+# Due Date: 11-4-24
 # Description:
 
 
@@ -69,39 +69,85 @@ class LinkedList:
 
     def insert_front(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        Inserts at the front of the SSL by pointing the front sentinel (self._head) to the new node,
+        and pointing the new node to what was self._head.next.
         """
-        pass
+        newNode = SLNode(value)
+
+        if self._head.next:
+            newNode.next = self._head.next
+        self._head.next = newNode
 
     def insert_back(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        Iterates to the end of the list and inserts at the end by pointing the last node to the new element.
         """
-        pass
+        node = self._head
+
+        while node.next:
+            node = node.next
+
+        node.next = SLNode(value)
 
     def insert_at_index(self, index: int, value: object) -> None:
         """
-        TODO: Write this implementation
+        Inserts new node at specific index by iterating through the nodes and their next's. Swaps the new element
+        with the old node.
         """
-        pass
+        if index < 0 or index > self.length():
+            raise SLLException
+
+        node = self._head
+
+        for i in range(index):
+            node = node.next
+
+        newNode = SLNode(value)
+        newNode.next = node.next
+        node.next = newNode
 
     def remove_at_index(self, index: int) -> None:
         """
-        TODO: Write this implementation
+        Iterates through link to desired index, and performs a simple operation of node.next = node.next.next
         """
-        pass
+        if index < 0 or index > self.length():
+            raise SLLException
+
+        node = self._head
+
+        for i in range(index):
+            node = node.next
+
+        node.next = node.next.next
 
     def remove(self, value: object) -> bool:
         """
-        TODO: Write this implementation
+        Iterates through list and removes the value object given in the parameter.
         """
-        pass
+        node = self._head
+
+        for i in range(self.length()):
+            node = node.next
+            if node.value == value:
+                node.next = node.next.next
+                return True
+
+        return False
+
 
     def count(self, value: object) -> int:
         """
         TODO: Write this implementation
         """
-        pass
+        node = self._head
+        count = 0
+
+        for i in range(self.length()):
+            node = node.next
+            if node.value == value:
+                count += 1
+
+        return count
 
     def find(self, value: object) -> bool:
         """

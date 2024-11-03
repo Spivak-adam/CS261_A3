@@ -1,8 +1,8 @@
-# Name:
-# OSU Email:
+# Name: Adam Spivak
+# OSU Email: Spivaka@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
+# Assignment: Assignment 3
+# Due Date: 11-4-24
 # Description:
 
 
