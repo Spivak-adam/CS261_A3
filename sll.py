@@ -95,7 +95,7 @@ class LinkedList:
         with the old node.
         """
         if index < 0 or index > self.length():
-            raise SLLException
+            raise SLLException()
 
         node = self._head
 
@@ -110,8 +110,8 @@ class LinkedList:
         """
         Iterates through link to desired index, and performs a simple operation of node.next = node.next.next
         """
-        if index < 0 or index > self.length():
-            raise SLLException
+        if index < 0 or index > self.length() - 1:
+            raise SLLException()
 
         node = self._head
 
