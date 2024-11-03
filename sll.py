@@ -168,6 +168,9 @@ class LinkedList:
                 return True
             node = node.next
 
+        if node.value == value:
+            return True
+
         return False
 
     def slice(self, start_index: int, size: int) -> "LinkedList":
