@@ -52,21 +52,30 @@ class Stack:
 
     def push(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        Easy stack push by appending to DA.
         """
-        pass
+        self._da.append(value)
 
     def pop(self) -> object:
         """
-        TODO: Write this implementation
+        Easy stack pop by removing from DA at index.
         """
-        pass
+        if self.size() == 0:
+            raise StackException()
+
+        pop = self.size()
+        self._da.remove_at_index(self.size() - 1)
+
+        return pop
 
     def top(self) -> object:
         """
-        TODO: Write this implementation
+        Easily returns top of the stack by accessing last element in DA.
         """
-        pass
+        if self.size() == 0:
+            raise StackException()
+
+        return self._da[self.size() - 1]
 
 
 # ------------------- BASIC TESTING -----------------------------------------

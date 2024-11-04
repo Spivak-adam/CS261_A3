@@ -177,7 +177,8 @@ class LinkedList:
 
     def slice(self, start_index: int, size: int) -> "LinkedList":
         """
-        TODO: Write this implementation
+        Creates a new list and "slices" the old one by only copying over elements
+        within range.
         """
         if start_index < 0 or start_index >= self.length() or size < 0 or size + start_index > self.length():
             raise SLLException()
