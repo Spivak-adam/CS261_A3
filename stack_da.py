@@ -63,7 +63,7 @@ class Stack:
         if self.size() == 0:
             raise StackException()
 
-        pop = self.size()
+        pop = self._da[self.size() - 1]
         self._da.remove_at_index(self.size() - 1)
 
         return pop

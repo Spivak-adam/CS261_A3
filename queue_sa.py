@@ -89,21 +89,42 @@ class Queue:
 
     def enqueue(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        Enqueues Elements on to SA through circular buffer, resizes if necessary.
         """
-        pass
+        if self._current_size == self._sa.length():
+            self._double_queue()
+
+        if self._back == - 1:
+            self._back = 0
+        else:
+            self._back = self._increment(self._back)
+
+        self._sa[self._back] = value
+        self._current_size += 1
+
 
     def dequeue(self) -> object:
         """
-        TODO: Write this implementation
+        Dequeues an SA but doesn't set the removed element to none
         """
-        pass
+        if self._current_size == 0:
+            raise QueueException()
+
+        saveFront = self._sa[self._front]
+
+        self._front = self._increment(self._front)
+        self._current_size -= 1
+
+        return saveFront
 
     def front(self) -> object:
         """
-        TODO: Write this implementation
+        Easily returns the element as the index of self._front
         """
-        pass
+        if self._current_size == 0:
+            raise QueueException()
+
+        return self._sa[self._front]
 
     # The method below is optional, but recommended, to implement. #
     # You may alter it in any way you see fit.                     #
@@ -112,7 +133,15 @@ class Queue:
         """
         TODO: Write this implementation
         """
-        pass
+        newSA = StaticArray(self.size() * 2)
+
+        for i in range(self._current_size):
+            newSA[i] = self._sa[self._front]
+            self._front = self._increment(self._front)
+
+        self._sa = newSA
+        self._front = 0
+        self._back = self._current_size - 1
 
 
 # ------------------- BASIC TESTING -----------------------------------------
