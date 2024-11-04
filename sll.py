@@ -108,7 +108,8 @@ class LinkedList:
 
     def remove_at_index(self, index: int) -> None:
         """
-        Iterates through link to desired index, and performs a simple operation of node.next = node.next.next
+        Iterates through link to desired index, and performs a simple operation of
+        node.next = node.next.next
         """
         if index < 0 or index > self.length() - 1:
             raise SLLException()
@@ -122,7 +123,9 @@ class LinkedList:
 
     def remove(self, value: object) -> bool:
         """
-        Iterates through list and removes the value object given in the parameter.
+        Iterates through list and removes the value object given in the parameter. It does
+        so by keeping track of the previous node and the current node, and if the value
+        matches the current node.value, it simply points the previous node to the next node.
         """
         node = self._head
         prevNode = node
@@ -142,10 +145,9 @@ class LinkedList:
 
         return False
 
-
     def count(self, value: object) -> int:
         """
-        TODO: Write this implementation
+        Iterates through linked list and +1 count for every match of parameter value
         """
         node = self._head
         count = 0
@@ -159,7 +161,7 @@ class LinkedList:
 
     def find(self, value: object) -> bool:
         """
-        TODO: Write this implementation
+        Iterates through linked list, and if node.value == value, return true
         """
         node = self._head
 
@@ -177,7 +179,22 @@ class LinkedList:
         """
         TODO: Write this implementation
         """
-        pass
+        if start_index < 0 or start_index >= self.length() or size < 0 or size + start_index > self.length():
+            raise SLLException()
+
+        newList = LinkedList()
+        node = self._head.next
+
+        for i in range(start_index):
+            node = node.next
+
+        for i in range(size):
+            newList.insert_back(node.value)
+            node = node.next
+
+        return newList
+
+
 
 
 if __name__ == "__main__":
