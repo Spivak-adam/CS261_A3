@@ -3,7 +3,7 @@
 # Course: CS261 - Data Structures
 # Assignment: Assignment 3
 # Due Date: 11-4-24
-# Description:
+# Description: Creates a Queue Using a Single-y linked list.
 
 
 from SLNode import SLNode
@@ -64,21 +64,37 @@ class Queue:
 
     def enqueue(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        Enqueues element to the end of the list using self._tail node
         """
-        pass
+        node = self._head
+
+        if not self._head:
+            self._head = SLNode(value)
+            self._tail = self._head
+        else:
+            self._tail.next = SLNode(value)
+            self._tail = self._tail.next
 
     def dequeue(self) -> object:
         """
-        TODO: Write this implementation
+        Dequeues element from list by pointing the header to the next element
         """
-        pass
+        if self.size() == 0:
+            raise QueueException()
+
+        saveHead = self._head.value
+        self._head = self._head.next
+
+        return saveHead
 
     def front(self) -> object:
         """
-        TODO: Write this implementation
+        Easily returns front of list node by self._head
         """
-        pass
+        if self.size() == 0:
+            raise QueueException()
+
+        return self._head.value
 
 
 # ------------------- BASIC TESTING -----------------------------------------
