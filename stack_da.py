@@ -3,7 +3,7 @@
 # Course: CS261 - Data Structures
 # Assignment: Assignment 3
 # Due Date: 11-4-24
-# Description:
+# Description: Creates a stack using a dynamic array
 
 
 from dynamic_array import *

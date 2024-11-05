@@ -3,7 +3,7 @@
 # Course: CS261 - Data Structures
 # Assignment: Assignment 3
 # Due Date: 11-4-24
-# Description:
+# Description: Creates a stack using a single-y linked list
 
 
 from SLNode import SLNode
@@ -63,21 +63,35 @@ class Stack:
 
     def push(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        Pushes something onto the stack by inserting it at the head of the SLL.
         """
-        pass
+        if not self._head:
+            self._head = SLNode(value)
+        else:
+            saveNode = self._head
+            self._head = SLNode(value)
+            self._head.next = saveNode
 
     def pop(self) -> object:
         """
-        TODO: Write this implementation
+        Pops something off the top of the stack by pointing the head to the next element.
         """
-        pass
+        if self.size() == 0:
+            raise StackException()
+
+        saveHead = self._head
+        self._head = self._head.next
+
+        return saveHead.value
 
     def top(self) -> object:
         """
-        TODO: Write this implementation
+        Returns the head of the stack.
         """
-        pass
+        if self.size() == 0:
+            raise StackException()
+
+        return self._head.value
 
 # ------------------- BASIC TESTING -----------------------------------------
 

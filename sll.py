@@ -3,7 +3,7 @@
 # Course: CS261 - Data Structures
 # Assignment: Assignment 3
 # Due Date: 11-4-24
-# Description:
+# Description: Creates a Single-y linked list and it's functionality.
 
 
 from SLNode import *

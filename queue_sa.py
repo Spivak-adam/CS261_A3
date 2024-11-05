@@ -3,7 +3,7 @@
 # Course: CS261 - Data Structures
 # Assignment: Assignment 3
 # Due Date: 11-4-24
-# Description:
+# Description: Creates a queue using a static array
 
 
 # Note: Changing any part of the pre-implemented methods (besides adding  #
